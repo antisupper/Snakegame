@@ -91,17 +91,25 @@ def gameLoop():
                 game_over = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a:
-                    x1_change = -snake_block
-                    y1_change = 0
+                    if y1_change != 0 or (y1_change == 0 and x1_change == 0):
+                        x1_change = -snake_block
+                        y1_change = 0
                 elif event.key == pygame.K_d:
-                    x1_change = snake_block
-                    y1_change = 0
+                    if y1_change != 0 or (y1_change == 0 and x1_change == 0):
+                        x1_change = snake_block
+                        y1_change = 0
                 elif event.key == pygame.K_w:
-                    y1_change = -snake_block
-                    x1_change = 0
+                    if x1_change != 0 or (y1_change == 0 and x1_change == 0):
+                        y1_change = -snake_block
+                        x1_change = 0
                 elif event.key == pygame.K_s:
-                    y1_change = snake_block
-                    x1_change = 0
+                    if x1_change != 0 or (y1_change == 0 and x1_change == 0):
+                        y1_change = snake_block
+                        x1_change = 0
+
+                elif event.key == pygame.k_a:
+                    if event.key == pygame.K_d:
+                        pass
  
         if x1 > dis_width or x1 < 0 or y1 > dis_height or y1 < 0:
             game_close = True
@@ -131,7 +139,6 @@ def gameLoop():
             Length_of_snake += 1
  
         clock.tick(snake_speed)
- 
     pygame.quit()
     quit()
  
