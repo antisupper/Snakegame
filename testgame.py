@@ -3,7 +3,9 @@ import time
 import random
  
 pygame.init()
- 
+pygame.mixer.music.load("I ll Be There.mp3")
+pygame.mixer.music.play(-1)
+
 white = (255, 255, 255)
 yellow = (255, 255, 102)
 black = (0, 0, 0)
@@ -90,26 +92,22 @@ def gameLoop():
             if event.type == pygame.QUIT:
                 game_over = True
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_a:
+                if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     if y1_change != 0 or (y1_change == 0 and x1_change == 0):
                         x1_change = -snake_block
                         y1_change = 0
-                elif event.key == pygame.K_d:
+                elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
                     if y1_change != 0 or (y1_change == 0 and x1_change == 0):
                         x1_change = snake_block
                         y1_change = 0
-                elif event.key == pygame.K_w:
+                elif event.key == pygame.K_w or event.key == pygame.K_UP:
                     if x1_change != 0 or (y1_change == 0 and x1_change == 0):
                         y1_change = -snake_block
-                        x1_change = 0
-                elif event.key == pygame.K_s:
+                        x1_change = 00
+                elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
                     if x1_change != 0 or (y1_change == 0 and x1_change == 0):
                         y1_change = snake_block
                         x1_change = 0
-
-                elif event.key == pygame.k_a:
-                    if event.key == pygame.K_d:
-                        pass
  
         if x1 > dis_width or x1 < 0 or y1 > dis_height or y1 < 0:
             game_close = True
@@ -139,8 +137,5 @@ def gameLoop():
             Length_of_snake += 1
  
         clock.tick(snake_speed)
-    pygame.quit()
-    quit()
- 
  
 gameLoop()
